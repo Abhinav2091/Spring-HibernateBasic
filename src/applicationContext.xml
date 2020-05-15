@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- load a property files -->
+	<context:property-placeholder location="classpath:sport.properties"></context:property-placeholder>
+
+	<!-- Define your beans here and simple change class name its configurable -->
+
+	<!-- define dependency -->
+	<bean id="myFortune" class="com.luv2code.springdemo.xmlConfiguration.serviceImpl.HappyFortuneService">
+	</bean>
+	<bean id="myCoach" class="com.luv2code.springdemo.xmlConfiguration.serviceImpl.BaseballCoach">
+		<!--set up constructor injection -->
+		<constructor-arg ref="myFortune" />
+	</bean>
+
+	<bean id="trackerCoach" class="com.luv2code.springdemo.xmlConfiguration.serviceImpl.TrackCoach">
+		<!--set up constructor injection -->
+		<constructor-arg ref="myFortune" />
+	</bean>
+
+	<bean id="hockeyCoach" class="com.luv2code.springdemo.xmlConfiguration.serviceImpl.HockeyCoach">
+		<!--set up Setter injection -->
+		<!-- name will call setFortuneService(...)-->
+		<property name="fortuneService" ref="myFortune" />
+		<!-- inject literal values -->
+		<property name="email" value="abc@gmail.com"/>
+		<property name="team" value="Hockey_Team"/>
+		<!-- read from property files -->
+		<property name="name" value="${luv2code.name}"/>
+		<property name="age" value="${luv2code.age}"/>
+
+	</bean>
+
+
+</beans>
+
+
+
+
+
