@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.luv2code.hibernatedemo.entity.Student;
 
-public class CreateStudentDemo {
+public class CrudStudentDemo {
 	
 
 	public static void main(String ar[])
@@ -35,7 +35,7 @@ public class CreateStudentDemo {
 		//updateStudent(sessionFactory, session);
 		
 		//delete Student
-		deleteStudent(sessionFactory, session);
+		//deleteStudent(sessionFactory, session);
 		
 	}
 	catch(Exception e)
