@@ -46,9 +46,11 @@ public class Instructor {
 	@JoinColumn(name = "instructor_detail_id")
 	private InstructorDetails instructorDetails;
 	
-	@OneToMany(mappedBy = "instructor", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+	@OneToMany(fetch = FetchType.LAZY,mappedBy = "instructor", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
 			CascadeType.REFRESH })
 	private List<Course> course;
+	
+	
 	
 	//add convient method for bi directional method
 	public void add(Course tempcourse)
